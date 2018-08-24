@@ -1,0 +1,212 @@
+import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
+
+export interface IClimber {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+@Component({
+  selector: 'ss-drop-climber',
+  templateUrl: './drop-climber.component.html',
+  styleUrls: ['./drop-climber.component.scss']
+})
+export class DropClimberComponent implements AfterViewInit, OnDestroy {
+
+  private el: HTMLElement;
+  private dragging = false;
+  private wasDragged = false;
+  private xVelocity = 0;
+  private rotation = 0;
+  private tiltAnimation: any;
+  private animationEndEvent: string;
+  private mousePositionX: number;
+  private mousePositionY: number;
+  private audioCrash = new Audio();
+
+  public isWalking = false;
+
+  get isDragging() {
+    return this.dragging;
+  }
+  set isDragging(value) {
+    this.dragging = value;
+    if (this.dragging) {
+      document.body.classList.add('drop-climber-dragging');
+    } else {
+      document.body.classList.remove('drop-climber-dragging');
+    }
+  }
+
+  Climber: IClimber = {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0
+  };
+
+  get winHeight() {
+    return document.documentElement.offsetHeight;
+  }
+
+  constructor(private element: ElementRef) {
+    this.onSelectStart = this.onSelectStart.bind(this);
+    this.onStartDrag = this.onStartDrag.bind(this);
+    this.onDrag = this.onDrag.bind(this);
+    this.onStopDrag = this.onStopDrag.bind(this);
+    this.tilt = this.tilt.bind(this);
+    this.walkLeft = this.walkLeft.bind(this);
+    this.climbBackUp = this.climbBackUp.bind(this);
+  }
+
+  ngAfterViewInit() {
+    this.el = this.element.nativeElement.querySelector('.sprite');
+    this.animationEndEvent = this.whichAnimationEndEvent();
+    this.loadAudio();
+
+    // Set up drag listeners
+    this.el.addEventListener('mousedown', this.onStartDrag);
+    this.el.addEventListener('touchstart', this.onStartDrag);
+    window.addEventListener('selectstart', this.onSelectStart);
+    window.addEventListener('mousemove', this.onDrag);
+    window.addEventListener('touchmove', this.onDrag);
+    window.addEventListener('mouseup', this.onStopDrag);
+    window.addEventListener('touchend', this.onStopDrag);
+
+    setTimeout(() => {
+      this.Climber.width = this.el.offsetWidth;
+      this.Climber.height = this.el.offsetHeight;
+    });
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('selectstart', this.onSelectStart);
+    window.removeEventListener('mousemove', this.onDrag);
+    window.removeEventListener('mouseup', this.onStopDrag);
+    if (this.el) {
+      this.el.removeEventListener('mousedown', this.onStartDrag);
+      this.el.removeEventListener(this.animationEndEvent, this.walkLeft);
+    }
+  }
+
+  whichAnimationEndEvent() {
+    const testEl = document.createElement('fake-element');
+    let t;
+
+    const transitions = {
+      'transition': 'transitionend',
+      'OTransition': 'oTransitionEnd',
+      'MozTransition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd'
+    };
+
+    for (t in transitions) {
+      if (testEl.style[t] !== undefined) {
+        return transitions[t];
+      }
+    }
+  }
+
+  loadAudio() {
+    this.audioCrash.src = '../../assets/drop-climber/8-bit-crash-1.mp3'; // https://www.audioblocks.com/royalty-free-audio/16+bit
+    this.audioCrash.load();
+  }
+
+  // Prevent text selection during drag events
+  onSelectStart(event) {
+    if (this.isDragging) {
+      event.preventDefault();
+    }
+  }
+
+  // Init dragging
+  onStartDrag(event) {
+    this.isDragging = true;
+    this.tiltAnimation = requestAnimationFrame(this.tilt);
+  }
+
+  // While dragging
+  onDrag(event) {
+    if (this.isDragging) {
+      this.mousePositionX = event.clientX || event.targetTouches[0].pageX;
+      this.mousePositionY = event.clientY || event.targetTouches[0].pageY;
+      this.wasDragged = true;
+    }
+  }
+
+  // Stop dragging
+  onStopDrag() {
+    this.isDragging = false;
+    cancelAnimationFrame(this.tiltAnimation);
+
+    this.drop();
+  }
+
+  // Sigmoid function
+  // https://uxdesign.cc/how-to-fix-dragging-animation-in-ui-with-simple-math-4bbc10deccf7
+  sigmoid(x) {
+    return (x / (1 + Math.abs(x)));
+  }
+
+  // Tilt the rotation of the sprite based on drag momentum
+  tilt() {
+    if (this.isDragging) {
+      this.xVelocity = (this.mousePositionX - this.Climber.x);
+
+      this.Climber.x = this.mousePositionX;
+      this.Climber.y = this.mousePositionY;
+
+      this.rotation = this.rotation * 0.9 + (this.sigmoid(this.xVelocity) * 10);
+
+      // Update the position of card
+      this.el.style.top = this.Climber.y + 'px';
+      // Subtract (Width of card / 2) to centre cursor on top
+      this.el.style.left = (this.Climber.x - (this.Climber.width / 2)) + 'px';
+
+      if (Math.abs(this.rotation) < 0.01) {
+        this.rotation = 0;
+      }
+
+      this.el.style.transform = `rotate(${this.rotation}deg)`;
+
+    }
+    this.tiltAnimation = requestAnimationFrame(this.tilt);
+  }
+
+  // Drop the Climber when released
+  drop() {
+    if (this.wasDragged) {
+      const dropHeight = this.winHeight - this.Climber.height;
+      this.el.addEventListener(this.animationEndEvent, this.walkLeft);
+      this.el.style.top = `${dropHeight}px`;
+      // const msPerHeight = 1; // How much ms per height
+      // const minRange = 500; // Minimal animation time
+      // const maxRange = 1500; // Maximal animation time
+      // let time = this.winHeight * msPerHeight;
+
+      // time = Math.min(time, maxRange);
+      // time = Math.max(time, minRange);
+    }
+  }
+
+  // Climber walks left after hitting the bottom of the page
+  walkLeft() {
+    this.audioCrash.play();
+    this.isWalking = true;
+    this.el.removeEventListener(this.animationEndEvent, this.walkLeft);
+    this.el.style.transform = `rotate(0deg)`;
+    setTimeout(() => {
+      this.el.addEventListener(this.animationEndEvent, this.climbBackUp);
+      this.el.style.left = `10px`;
+    }, 800);
+  }
+
+  climbBackUp() {
+    this.isWalking = false;
+    this.el.removeEventListener(this.animationEndEvent, this.climbBackUp);
+    setTimeout(() => {
+      this.el.style.top = `100px`;
+    }, 100);
+  }
+}

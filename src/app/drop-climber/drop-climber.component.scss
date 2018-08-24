@@ -1,0 +1,24 @@
+.sprite {
+  background: url('/assets/drop-climber/sprite.png') no-repeat;
+  background-position: 0 -96px;
+  background-size: 876px 426px;
+  cursor: grab;
+  height: 48px;
+  image-rendering: pixelated;
+  position: absolute;
+  transform-origin: top center;
+  width: 40px;
+
+  &:not(.dragging) {
+    transition: top 2.5s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
+  }
+
+  &.dragging {
+    background-position: -538px -156px;
+    cursor: grabbing;
+  }
+
+  &.walking {
+    transition: left 5s linear;
+  }
+}
