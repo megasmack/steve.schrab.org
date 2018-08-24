@@ -1,0 +1,9 @@
+{
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "tslint.autoFixOnSave": true,
+  "tslint.rulesDirectory": "./node_modules/codelyzer",
+  "typescript.tsdk": "./node_modules/typescript/lib"
+}
