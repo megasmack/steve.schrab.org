@@ -15,22 +15,17 @@ export interface IClimber {
 export class DropClimberComponent implements AfterViewInit, OnDestroy {
 
   private el: HTMLElement;
+
+  // Actions
   private dragging = false;
   private wasDragged = false;
-  private xVelocity = 0;
-  private rotation = 0;
-  private tiltAnimation: any;
-  private animationEndEvent: string;
-  private mousePositionX: number;
-  private mousePositionY: number;
-  private audioCrash = new Audio();
-
+  public isClimbing = false;
+  public isDropping = false;
   public isWalking = false;
-
-  get isDragging() {
+  public get isDragging() {
     return this.dragging;
   }
-  set isDragging(value) {
+  public set isDragging(value) {
     this.dragging = value;
     if (this.dragging) {
       document.body.classList.add('drop-climber-dragging');
@@ -38,6 +33,17 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
       document.body.classList.remove('drop-climber-dragging');
     }
   }
+
+  // Math vars
+  private xVelocity = 0;
+  private rotation = 0;
+  private mousePositionX: number;
+  private mousePositionY: number;
+
+  // Event vars
+  private tiltAnimation: any;
+  // private animationEndEvent: string;
+  private audioCrash = new Audio();
 
   Climber: IClimber = {
     x: 0,
@@ -61,8 +67,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.el = this.element.nativeElement.querySelector('.sprite');
-    this.animationEndEvent = this.whichAnimationEndEvent();
+    this.el = this.element.nativeElement.querySelector('.climber');
     this.loadAudio();
 
     // Set up drag listeners
@@ -74,6 +79,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     window.addEventListener('mouseup', this.onStopDrag);
     window.addEventListener('touchend', this.onStopDrag);
 
+    // Set Sprite dimensions
     setTimeout(() => {
       this.Climber.width = this.el.offsetWidth;
       this.Climber.height = this.el.offsetHeight;
@@ -86,25 +92,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     window.removeEventListener('mouseup', this.onStopDrag);
     if (this.el) {
       this.el.removeEventListener('mousedown', this.onStartDrag);
-      this.el.removeEventListener(this.animationEndEvent, this.walkLeft);
-    }
-  }
-
-  whichAnimationEndEvent() {
-    const testEl = document.createElement('fake-element');
-    let t;
-
-    const transitions = {
-      'transition': 'transitionend',
-      'OTransition': 'oTransitionEnd',
-      'MozTransition': 'transitionend',
-      'WebkitTransition': 'webkitTransitionEnd'
-    };
-
-    for (t in transitions) {
-      if (testEl.style[t] !== undefined) {
-        return transitions[t];
-      }
+      this.el.removeEventListener('transitionend', this.walkLeft);
     }
   }
 
@@ -137,10 +125,12 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
 
   // Stop dragging
   onStopDrag() {
-    this.isDragging = false;
-    cancelAnimationFrame(this.tiltAnimation);
+    if (this.wasDragged) {
+      this.isDragging = false;
+      cancelAnimationFrame(this.tiltAnimation);
 
-    this.drop();
+      this.drop();
+    }
   }
 
   // Sigmoid function
@@ -176,35 +166,36 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
 
   // Drop the Climber when released
   drop() {
-    if (this.wasDragged) {
-      const dropHeight = this.winHeight - this.Climber.height;
-      this.el.addEventListener(this.animationEndEvent, this.walkLeft);
-      this.el.style.top = `${dropHeight}px`;
-      // const msPerHeight = 1; // How much ms per height
-      // const minRange = 500; // Minimal animation time
-      // const maxRange = 1500; // Maximal animation time
-      // let time = this.winHeight * msPerHeight;
+    this.isDropping = true;
+    const dropHeight = this.winHeight - this.Climber.height;
+    this.el.addEventListener('transitionend', this.walkLeft);
+    this.el.style.top = `${dropHeight}px`;
+    // const msPerHeight = 1; // How much ms per height
+    // const minRange = 500; // Minimal animation time
+    // const maxRange = 1500; // Maximal animation time
+    // let time = this.winHeight * msPerHeight;
 
-      // time = Math.min(time, maxRange);
-      // time = Math.max(time, minRange);
-    }
+    // time = Math.min(time, maxRange);
+    // time = Math.max(time, minRange);
   }
 
   // Climber walks left after hitting the bottom of the page
   walkLeft() {
     this.audioCrash.play();
+    this.isDropping = false;
     this.isWalking = true;
-    this.el.removeEventListener(this.animationEndEvent, this.walkLeft);
+    this.el.removeEventListener('transitionend', this.walkLeft);
     this.el.style.transform = `rotate(0deg)`;
     setTimeout(() => {
-      this.el.addEventListener(this.animationEndEvent, this.climbBackUp);
+      this.el.addEventListener('transitionend', this.climbBackUp);
       this.el.style.left = `10px`;
     }, 800);
   }
 
   climbBackUp() {
     this.isWalking = false;
-    this.el.removeEventListener(this.animationEndEvent, this.climbBackUp);
+    this.isClimbing = true;
+    this.el.removeEventListener('transitionend', this.climbBackUp);
     setTimeout(() => {
       this.el.style.top = `100px`;
     }, 100);

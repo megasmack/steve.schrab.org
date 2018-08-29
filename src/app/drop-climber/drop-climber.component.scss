@@ -1,24 +1,95 @@
-.sprite {
-  background: url('/assets/drop-climber/sprite.png') no-repeat;
-  background-position: 0 -96px;
-  background-size: 876px 426px;
+@mixin sprite-dimensions {
+  background-size: ($actual-sprite-width * $scale) ($actual-sprite-height * $scale);
+  height: $actual-frame-height * $scale;
+  width: $actual-frame-width * $scale;
+}
+
+@function sprite-position($x, $y) {
+  @return ($x * $scale) ($y * $scale);
+}
+
+$scale:                 3;
+$actual-sprite-width:   438px;
+$actual-sprite-height:  218px;
+$actual-frame-width:    20px;
+$actual-frame-height:   24px;
+$sprite-start:          sprite-position(0, -48px);
+$sprite-freak:          sprite-position(-269px, -78px);
+$sprite-left:           sprite-position(-60px, -48px);
+$sprite-walk-left:      sprite-position(-60px, -78px);
+$sprite-walk-left-alt:  sprite-position(-60px, -108px);
+
+.climber {
+  @include sprite-dimensions;
+  background-image: url('/assets/drop-climber/sprite.png');
+  background-position: $sprite-start;
   cursor: grab;
-  height: 48px;
   image-rendering: pixelated;
   position: absolute;
   transform-origin: top center;
-  width: 40px;
-
-  &:not(.dragging) {
-    transition: top 2.5s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
-  }
+  will-change: transform;
 
   &.dragging {
-    background-position: -538px -156px;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 3;
+    animation-name: freakout;
+    animation-timing-function: steps(1, end);
     cursor: grabbing;
   }
 
+  &.dropping {
+    background-position: $sprite-freak;
+    transition: top 2.5s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
+  }
+
   &.walking {
+    animation-delay: .8s;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: walk-left;
+    animation-timing-function: steps(1, end);
+    background-position: $sprite-left;
     transition: left 5s linear;
+  }
+
+  &.climbing {
+    transition: top 5s linear;
+  }
+}
+
+@keyframes freakout {
+  0% {
+    background-position: $sprite-freak;
+  }
+
+  50% {
+    background-position: $sprite-start;
+  }
+
+  100% {
+    background-position: $sprite-freak;
+  }
+}
+
+@keyframes walk-left {
+  0% {
+    background-position: $sprite-walk-left-alt;
+  }
+
+  25% {
+    background-position: $sprite-left;
+  }
+
+  50% {
+    background-position: $sprite-walk-left;
+  }
+
+  75% {
+    background-position: $sprite-left;
+  }
+
+  100% {
+    background-position: $sprite-walk-left-alt;
   }
 }
