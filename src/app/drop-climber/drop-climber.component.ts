@@ -42,7 +42,6 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
 
   // Event vars
   private tiltAnimation: any;
-  // private animationEndEvent: string;
   private audioCrash = new Audio();
 
   Climber: IClimber = {
@@ -56,6 +55,10 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     return document.documentElement.offsetHeight;
   }
 
+  get winWidth() {
+    return document.documentElement.offsetWidth;
+  }
+
   constructor(private element: ElementRef) {
     this.onSelectStart = this.onSelectStart.bind(this);
     this.onStartDrag = this.onStartDrag.bind(this);
@@ -64,6 +67,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     this.tilt = this.tilt.bind(this);
     this.walkLeft = this.walkLeft.bind(this);
     this.climbBackUp = this.climbBackUp.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   ngAfterViewInit() {
@@ -93,6 +97,8 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     if (this.el) {
       this.el.removeEventListener('mousedown', this.onStartDrag);
       this.el.removeEventListener('transitionend', this.walkLeft);
+      this.el.removeEventListener('transitionend', this.climbBackUp);
+      this.el.removeEventListener('transitionend', this.reset);
     }
   }
 
@@ -133,6 +139,13 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  msToSize(size, ms) {
+    const msPerSize = ms; // How much ms per height
+    let time = size * msPerSize;
+    time = Math.floor(time);
+    return time;
+  }
+
   // Sigmoid function
   // https://uxdesign.cc/how-to-fix-dragging-animation-in-ui-with-simple-math-4bbc10deccf7
   sigmoid(x) {
@@ -160,23 +173,16 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
 
       this.el.style.transform = `rotate(${this.rotation}deg)`;
 
+      this.tiltAnimation = requestAnimationFrame(this.tilt);
     }
-    this.tiltAnimation = requestAnimationFrame(this.tilt);
   }
 
   // Drop the Climber when released
   drop() {
     this.isDropping = true;
-    const dropHeight = this.winHeight - this.Climber.height;
+    this.el.style.transitionDuration = `${this.msToSize(this.winHeight, 1.5)}ms`;
     this.el.addEventListener('transitionend', this.walkLeft);
-    this.el.style.top = `${dropHeight}px`;
-    // const msPerHeight = 1; // How much ms per height
-    // const minRange = 500; // Minimal animation time
-    // const maxRange = 1500; // Maximal animation time
-    // let time = this.winHeight * msPerHeight;
-
-    // time = Math.min(time, maxRange);
-    // time = Math.max(time, minRange);
+    this.el.style.top = `${this.winHeight - this.Climber.height}px`;
   }
 
   // Climber walks left after hitting the bottom of the page
@@ -185,6 +191,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     this.isDropping = false;
     this.isWalking = true;
     this.el.removeEventListener('transitionend', this.walkLeft);
+    this.el.style.transitionDuration = `${this.msToSize(this.winWidth, 3)}ms`;
     this.el.style.transform = `rotate(0deg)`;
     setTimeout(() => {
       this.el.addEventListener('transitionend', this.climbBackUp);
@@ -195,9 +202,22 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
   climbBackUp() {
     this.isWalking = false;
     this.isClimbing = true;
-    this.el.removeEventListener('transitionend', this.climbBackUp);
+    this.el.removeEventListener('transitionend', this.walkLeft);
+    this.el.style.transitionDuration = `${this.msToSize(this.winHeight, 1.5)}ms`;
     setTimeout(() => {
+      this.el.addEventListener('transitionend', this.reset);
       this.el.style.top = `100px`;
     }, 100);
+  }
+
+  reset() {
+    this.isClimbing = false;
+    this.wasDragged = false;
+    this.xVelocity = 0;
+    this.rotation = 0;
+    this.mousePositionX = 0;
+    this.mousePositionY = 0;
+    this.el.removeEventListener('transitionend', this.climbBackUp);
+    this.el.style.transitionDuration = '';
   }
 }
