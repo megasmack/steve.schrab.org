@@ -5,6 +5,8 @@ export interface IClimber {
   y: number;
   width: number;
   height: number;
+  startX: number;
+  startY: number;
 }
 
 @Component({
@@ -19,6 +21,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
   // Actions
   private dragging = false;
   private wasDragged = false;
+  public isResetting = false;
   public isClimbing = false;
   public isDropping = false;
   public isWalking = false;
@@ -44,11 +47,14 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
   private tiltAnimation: any;
   private audioCrash = new Audio();
 
+  // Init Climber Object
   Climber: IClimber = {
     x: 0,
     y: 0,
     width: 0,
-    height: 0
+    height: 0,
+    startX: 0,
+    startY: 0
   };
 
   get winHeight() {
@@ -83,10 +89,13 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     window.addEventListener('mouseup', this.onStopDrag);
     window.addEventListener('touchend', this.onStopDrag);
 
-    // Set Sprite dimensions
+    // Set up Climber dimensions/positions
     setTimeout(() => {
       this.Climber.width = this.el.offsetWidth;
       this.Climber.height = this.el.offsetHeight;
+      this.Climber.startX = parseInt(window.getComputedStyle(this.el).getPropertyValue('left'), 10);
+      this.Climber.startY = parseInt(window.getComputedStyle(this.el).getPropertyValue('top'), 10);
+      console.log(this.Climber);
     });
   }
 
@@ -117,6 +126,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
   // Init dragging
   onStartDrag(event) {
     this.isDragging = true;
+    this.isResetting = false;
     this.tiltAnimation = requestAnimationFrame(this.tilt);
   }
 
@@ -152,7 +162,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
     return (x / (1 + Math.abs(x)));
   }
 
-  // Tilt the rotation of the sprite based on drag momentum
+  // Tilt the rotation of the Climber based on drag momentum
   tilt() {
     if (this.isDragging) {
       this.xVelocity = (this.mousePositionX - this.Climber.x);
@@ -213,11 +223,14 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
   reset() {
     this.isClimbing = false;
     this.wasDragged = false;
+    this.isResetting = true;
     this.xVelocity = 0;
     this.rotation = 0;
     this.mousePositionX = 0;
     this.mousePositionY = 0;
     this.el.removeEventListener('transitionend', this.climbBackUp);
     this.el.style.transitionDuration = '';
+    this.el.style.left = `${this.Climber.startX}px`;
+    this.el.style.top = `${this.Climber.startY}px`;
   }
 }

@@ -25,7 +25,9 @@ $sprite-walk-left-alt:  sprite-position(-60px, -108px);
   background-position: $sprite-start;
   cursor: grab;
   image-rendering: pixelated;
+  left: 100px;
   position: absolute;
+  top: 20px;
   transform-origin: top center;
   will-change: transform;
 
@@ -55,6 +57,10 @@ $sprite-walk-left-alt:  sprite-position(-60px, -108px);
 
   &.climbing {
     transition: top 5s linear;
+  }
+
+  &.resetting {
+    transition: all .25s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
   }
 }
 
@@ -92,4 +98,15 @@ $sprite-walk-left-alt:  sprite-position(-60px, -108px);
   100% {
     background-position: $sprite-walk-left-alt;
   }
+}
+
+.debug {
+  background: rgba(255, 255, 255, .6);
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.1em;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

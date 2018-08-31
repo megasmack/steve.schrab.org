@@ -2,13 +2,15 @@
   [class.climbing]="isClimbing"
   [class.dropping]="isDropping"
   [class.dragging]="isDragging"
-  [class.walking]="isWalking">
+  [class.walking]="isWalking"
+  [class.resetting]="isResetting">
 </div>
 
-<div>
+<div class="debug">
   wasDragged: {{ wasDragged }}<br>
   isClimbing: {{ isClimbing }}<br>
   isDropping: {{ isDropping }}<br>
   isDragging: {{ isDragging }}<br>
-  isWalking:  {{ isWalking }}
+  isWalking:  {{ isWalking }}<br>
+  isResetting:  {{ isResetting }}
 </div>
