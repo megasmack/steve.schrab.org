@@ -18,6 +18,8 @@ $sprite-freak:          sprite-position(-269px, -78px);
 $sprite-left:           sprite-position(-60px, -48px);
 $sprite-walk-left:      sprite-position(-60px, -78px);
 $sprite-walk-left-alt:  sprite-position(-60px, -108px);
+$sprite-climb:          sprite-position(-330px, -108px);
+$sprite-flat:           sprite-position(-388px, -42px); // Subtract 8 so sprite is flush with bottom of screen
 
 .climber {
   @include sprite-dimensions;
@@ -45,6 +47,10 @@ $sprite-walk-left-alt:  sprite-position(-60px, -108px);
     transition: top 2.5s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
   }
 
+  &.crashed {
+    background-position: $sprite-flat;
+  }
+
   &.walking {
     animation-delay: .8s;
     animation-duration: 1s;
@@ -56,11 +62,12 @@ $sprite-walk-left-alt:  sprite-position(-60px, -108px);
   }
 
   &.climbing {
+    background-position: $sprite-climb;
     transition: top 5s linear;
   }
 
   &.resetting {
-    transition: all .25s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
+    transition: top .5s ease-out, left .5s ease-out;
   }
 }
 
@@ -98,15 +105,4 @@ $sprite-walk-left-alt:  sprite-position(-60px, -108px);
   100% {
     background-position: $sprite-walk-left-alt;
   }
-}
-
-.debug {
-  background: rgba(255, 255, 255, .6);
-  font-family: monospace;
-  font-size: 12px;
-  line-height: 1.1em;
-  padding: 10px;
-  position: absolute;
-  right: 0;
-  top: 0;
 }
