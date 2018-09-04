@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 60px;
+}
+
+.position {
+  line-height: 1.2em;
+  margin: 20px 0;
+
+  &__company,
+  &__title {
+    margin: 0;
+  }
+
+  &__duration,
+  &__location {
+    font-size: .6rem;
+  }
+}
+
+.position__description {
+  font-size: .8rem;
+
+  > p {
+    margin: 0 0 1em;
+  }
+}
