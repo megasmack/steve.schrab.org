@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
 
-export interface IClimber {
+export interface Climber {
   x: number;
   y: number;
   width: number;
@@ -53,7 +53,7 @@ export class DropClimberComponent implements AfterViewInit, OnDestroy {
   private audioJump = new Audio();
 
   // Init Climber Object
-  Climber: IClimber = {
+  Climber: Climber = {
     x: 0,
     y: 0,
     width: 0,

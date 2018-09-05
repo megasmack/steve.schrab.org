@@ -1,0 +1,154 @@
+{
+  "basics": {
+    "name": "Steve Schrab",
+    "label": "Front-End Engineer",
+    "picture": "",
+    "email": "steve.schrab",
+    "phone": "(414) 688-5665",
+    "website": "http://steve.schrab.org",
+    "summary": "A summary of John Doe...",
+    "location": {
+      "address": "1230 Woodside LN",
+      "postalCode": "WI 53122",
+      "city": "Elm Grove",
+      "countryCode": "US",
+      "region": "Wisconsin"
+    },
+    "profiles": [
+      {
+      "network": "LinkedIn",
+      "username": "steveschrab",
+      "url": "https://www.linkedin.com/in/steveschrab/"
+      },
+      {
+      "network": "GitHub",
+      "username": "megasmack",
+      "url": "https://github.com/megasmack"
+      },
+      {
+      "network": "CodePen",
+      "username": "megasmack",
+      "url": "https://codepen.io/megasmack/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Thomson Reuters",
+      "position": "Senior Software Engineer",
+      "startDate": "May 2016",
+      "endDate": "present",
+      "location": "Brookfield, WI",
+      "summary": "Part of a team that built and maintained a User Interface component library for new web applications in use by Thomson Reuters North American Wealth Management branch. Components and Applications were built on Angular 6/TypeScript stack."
+    },
+    {
+      "company": "SafeNet Consulting",
+      "position": "Front-End Developer",
+      "startDate": "Jan 2016",
+      "endDate": "May 2016",
+      "location": "Milwaukee, WI",
+      "summary": "Worked as a Front-End Developer consultant at Johnson Controls building web apps using HTML, CSS, Angular/TypeScript."
+    },
+    {
+      "company": "GS Design",
+      "position": "Front-End Development Lead",
+      "startDate": "Mar 2015",
+      "endDate": "Jan 2016",
+      "location": "Milwaukee, WI",
+      "summary": "Front-end development using HTML, CSS, and JavaScript/jQuery. Responsible for coming up with consistency guidelines for other Front-End developers. Served as a mentor to other developers. Building responsive websites from a designer’s static PSD files. Making logical choices for breakpoint decisions. Experience working in Drupal and Django's Template Language. Experience building front-end interfaces for mobiles apps in iOS and Android using React Native. Working with clients such as Harley-Davidson, Harley Owners Group, Mercury Marine, SRAM, and Zoom Audio."
+    },
+    {
+      "company": "GS Design",
+      "position": "Senior Front-End Developer",
+      "startDate": "Jul 2004",
+      "endDate": "Mar 2015",
+      "location": "Milwaukee, WI",
+      "summary": "Front-end development using HTML, CSS, JavaScript/jQuery, and Flash/ActionScript. Working with clients such as Harley-Davidson, Harley-Davidson Museum, Buell, Brunswick, Mercury Marine, SRAM, Zoom Audio, and Showtime."
+    },
+    {
+      "company": "Evans Kurtz Group",
+      "position": "Senior Web Developer",
+      "startDate": "Nov 2000",
+      "endDate": "Jul 2004",
+      "location": "Milwaukee, WI",
+      "summary": "Front-end development using HTML, CSS, JavaScript, and Flash/ActionScript. Working with clients such as Harley-Davidson, Buell Motorcycles, SRAM, and US Bank. (EKG was acquired in 2004 by GS Design)"
+    },
+    {
+      "company": "Laughlin Constable",
+      "position": "Programmer",
+      "startDate": "Mar 1999",
+      "endDate": "Nov 2000",
+      "location": "Milwaukee, WI",
+      "summary": "Front-end development using HTML, CSS, and Flash/ActionScript. Worked with clients such as Briggs & Stratton and Bridgestone/Firestone."
+    },
+    {
+      "company": "Royle Printing",
+      "position": "Multimedia Specialist",
+      "startDate": "Oct 1997",
+      "endDate": "Nov 1999",
+      "location": "Sun Prairie, WI",
+      "summary": "Interface design for web sites and interactive CD-ROMs, CD-ROM programming, front-end development, video production, 3D modeling, and animation. Did work with clients such as Caterpillar, Piper Aircraft, and The Packer Report."
+    }
+  ],
+  "volunteer": [{
+    "organization": "Organization",
+    "position": "Volunteer",
+    "website": "http://organization.com/",
+    "startDate": "2012-01-01",
+    "endDate": "2013-01-01",
+    "summary": "Description...",
+    "highlights": [
+      "Awarded 'Volunteer of the Month'"
+    ]
+  }],
+  "education": [{
+    "institution": "University",
+    "area": "Software Development",
+    "studyType": "Bachelor",
+    "startDate": "2011-01-01",
+    "endDate": "2013-01-01",
+    "gpa": "4.0",
+    "courses": [
+      "DB1101 - Basic SQL"
+    ]
+  }],
+  "awards": [{
+    "title": "Award",
+    "date": "2014-11-01",
+    "awarder": "Company",
+    "summary": "There is no spoon."
+  }],
+  "publications": [{
+    "name": "Publication",
+    "publisher": "Company",
+    "releaseDate": "2014-10-01",
+    "website": "http://publication.com",
+    "summary": "Description..."
+  }],
+  "skills": [{
+    "name": "Web Development",
+    "level": "Master",
+    "keywords": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Angular",
+      "TypeScript"
+    ]
+  }],
+  "languages": [{
+    "name": "English",
+    "level": "Native speaker"
+  }],
+  "interests": [{
+    "name": "Wildlife",
+    "keywords": [
+      "Ferrets",
+      "Unicorns"
+    ]
+  }],
+  "references": [{
+    "name": "Jane Doe",
+    "reference": "Reference..."
+  }]
+}

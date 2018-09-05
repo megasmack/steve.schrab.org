@@ -32,77 +32,81 @@ $sprite-flat:           sprite-position(-388px, -42px); // Subtract 8 so sprite 
   top: 20px;
   transform-origin: top center;
   will-change: transform;
+}
 
-  &.dragging {
-    animation-duration: .2s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 3;
-    animation-name: freakout;
-    animation-timing-function: steps(1, end);
-    cursor: grabbing;
-  }
+.dragging {
+  animation-duration: .2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 3;
+  animation-name: freakout;
+  animation-timing-function: steps(1, end);
+  cursor: grabbing;
 
-  &.dropping {
-    background-position: $sprite-freak;
-    transition: top 2.5s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
-  }
+  @at-root {
+    @keyframes freakout {
+      0% {
+        background-position: $sprite-freak;
+      }
 
-  &.crashed {
-    background-position: $sprite-flat;
-  }
+      50% {
+        background-position: $sprite-start;
+      }
 
-  &.walking {
-    animation-delay: .8s;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-name: walk-left;
-    animation-timing-function: steps(1, end);
-    background-position: $sprite-left;
-    transition: left 5s linear;
-  }
-
-  &.climbing {
-    background-position: $sprite-climb;
-    transition: top 5s linear;
-  }
-
-  &.resetting {
-    transition: top .5s ease-out, left .5s ease-out;
+      100% {
+        background-position: $sprite-freak;
+      }
+    }
   }
 }
 
-@keyframes freakout {
-  0% {
-    background-position: $sprite-freak;
-  }
+.dropping {
+  background-position: $sprite-freak;
+  transition: top 2.5s cubic-bezier(.24, -.17, .34, .41); // http://cubic-bezier.com/#.24,-0.17,.34,.42
+}
 
-  50% {
-    background-position: $sprite-start;
-  }
+.crashed {
+  background-position: $sprite-flat;
+}
 
-  100% {
-    background-position: $sprite-freak;
+.walking {
+  animation-delay: .8s;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: walk-left;
+  animation-timing-function: steps(1, end);
+  background-position: $sprite-left;
+  transition: left 5s linear;
+
+  @at-root {
+    @keyframes walk-left {
+      0% {
+        background-position: $sprite-walk-left-alt;
+      }
+
+      25% {
+        background-position: $sprite-left;
+      }
+
+      50% {
+        background-position: $sprite-walk-left;
+      }
+
+      75% {
+        background-position: $sprite-left;
+      }
+
+      100% {
+        background-position: $sprite-walk-left-alt;
+      }
+    }
   }
 }
 
-@keyframes walk-left {
-  0% {
-    background-position: $sprite-walk-left-alt;
-  }
+.climbing {
+  background-position: $sprite-climb;
+  transition: top 5s linear;
+}
 
-  25% {
-    background-position: $sprite-left;
-  }
-
-  50% {
-    background-position: $sprite-walk-left;
-  }
-
-  75% {
-    background-position: $sprite-left;
-  }
-
-  100% {
-    background-position: $sprite-walk-left-alt;
-  }
+.resetting {
+  transition: top .5s ease-out, left .5s ease-out;
 }

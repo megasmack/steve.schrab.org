@@ -1,29 +1,35 @@
 :host {
   display: block;
   margin: 0 auto;
-  max-width: 900px;
-  padding: 60px;
+  max-width: 45rem;
+  padding: 3rem;
+}
+
+h2 {
+  border-bottom: 1px double #333;
+  padding-bottom: .2em;
 }
 
 .position {
   line-height: 1.2em;
-  margin: 20px 0;
-
-  &__company,
-  &__title {
-    margin: 0;
-  }
-
-  &__duration,
-  &__location {
-    font-size: .6rem;
-  }
+  margin: 1rem 0;
 }
 
-.position__description {
+.position-details {
+  font-size: .7rem;
+  line-height: 1.5em;
+  margin: .5em 0;
+}
+
+.company,
+.title {
+  margin: 0;
+}
+
+.description {
   font-size: .8rem;
 
-  > p {
+  p {
     margin: 0 0 1em;
   }
 }

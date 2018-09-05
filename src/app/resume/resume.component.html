@@ -1,69 +1,15 @@
-<article>
-  <h2>Experience</h2>
+<article *ngIf="resumeWork">
+  <h2>Work</h2>
 
-  <section class="position">
-    <h4 class="position__company">Thomson Reuters</h4>
-    <h5 class="position__title">Senior Software Engineer</h5>
-    <span class="position__duration">May 2016 – Present</span><br>
-    <span class="position__location">Brookfield, WI</span>
-    <div class="position__description">
-      <p>Helping build and maintain a User Interface component library for new applications in use by Thomson Reuters North American Wealth Management branch. Components are built on Angular 6/TypeScript stack.</p>
+  <section class="position" *ngFor="let work of resumeWork">
+    <h4 class="company">{{ work.company }}</h4>
+    <h5 class="title">{{ work.position }}</h5>
+    <div class="position-details">
+      <span class="duration">{{ work.startDate }} – {{ work.endDate}}</span><br>
+      <span class="location">Brookfield, WI</span>
     </div>
-  </section>
-
-  <section class="position">
-    <h4 class="position__company">SafeNet Consulting</h4>
-    <h5 class="position__title">Front-End Developer</h5>
-    <span class="position__duration">Jan 2016 – May 2016</span><br>
-    <span class="position__location">Milwaukee, WI</span>
-    <div class="position__description">
-      <p>Worked as a Front-End Developer consultant at Johnson Controls building web apps using HTML, CSS, Angular/TypeScript.</p>
-    </div>
-  </section>
-
-  <section class="position">
-    <h4 class="position__company">GS Design</h4>
-    <h5 class="position__title">Front-End Development Lead</h5>
-    <span class="position__duration">Mar 2015 – Jan 2016</span><br>
-    <span class="position__location">Milwaukee, WI</span>
-    <div class="position__description">
-      <p>Front-end development using HTML, CSS, and JavaScript/jQuery. Responsible for coming up with consistency guidelines for other Front-End developers. Mentorship to other developers. Building responsive websites from a designer’s static PSD files. Making logical choices for breakpoint decisions. Experience working in Drupal and Django's Template Language. Experience building front-end interfaces for mobiles apps in iOS and Android using React Native. Working with clients such as Harley-Davidson, Harley Owners Group, Mercury Marine, SRAM, and Zoom Audio.</p>
-    </div>
-    <h5 class="position__title">Senior Front-End Developer</h5>
-    <span class="position__duration">Jul 2004 – Mar 2015</span><br>
-    <span class="position__location">Milwaukee, WI</span>
-    <div class="position__description">
-      <p>Front-end development using HTML, CSS, JavaScript/jQuery, and Flash/ActionScript. Working with clients such as Harley-Davidson, Harley-Davidson Museum, Buell, Brunswick, Mercury Marine, SRAM, Zoom Audio, and Showtime.</p>
-    </div>
-  </section>
-
-  <section class="position">
-    <h4 class="position__company">Evans Kurtz Group</h4>
-    <h5 class="position__title">Senior Web Developer</h5>
-    <span class="position__duration">Nov 2000 – Jul 2004</span><br>
-    <span class="position__location">Milwaukee, WI</span>
-    <div class="position__description">
-      <p>Front-end development using HTML, CSS, JavaScript, and Flash/ActionScript. Working with clients such as Harley-Davidson, Buell Motorcycles, SRAM, and US Bank. EKG was acquired in 2004 by GS Design.</p>
-    </div>
-  </section>
-
-  <section class="position">
-    <h4 class="position__company">Laughlin Constable</h4>
-    <h5 class="position__title">Programmer</h5>
-    <span class="position__duration">Mar 1999 – Nov 2000</span><br>
-    <span class="position__location">Milwaukee, WI</span>
-    <div class="position__description">
-      <p>Front-end development using HTML, CSS, and Flash/ActionScript. Worked with clients such as Briggs & Stratton and Bridgestone/Firestone.</p>
-    </div>
-  </section>
-
-  <section class="position">
-    <h4 class="position__company">Royle Printing</h4>
-    <h5 class="position__title">Multimedia Specialist</h5>
-    <span class="position__duration">Oct 1997 – Nov 1999</span><br>
-    <span class="position__location">Sun Prairie, WI</span>
-    <div class="position__description">
-      <p>Interface design for web sites and interactive CD-ROMs, CD-ROM programming, front-end development, video production, 3D modeling, and animation. Did work with clients such as Caterpillar, Piper Aircraft, and The Packer Report.</p>
+    <div class="description">
+      <p>{{ work.summary }}</p>
     </div>
   </section>
 
