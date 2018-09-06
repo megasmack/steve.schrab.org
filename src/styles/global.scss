@@ -1,12 +1,17 @@
-@import './vars';
+@import 'vars';
 
 html {
+  background: $color-primary-1;
+  color: $color-primary-3;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 20px;
   line-height: 1.5em;
   min-height: 100vh;
   overflow-x: hidden;
-  color: $text-color;
+}
+
+body {
+  margin: 0;
 }
 
 .drop-climber-dragging {

@@ -6,7 +6,7 @@
     "email": "steve.schrab",
     "phone": "(414) 688-5665",
     "website": "http://steve.schrab.org",
-    "summary": "A summary of John Doe...",
+    "summary": "For 20 years I have been building websites and webapps. Evolving my skill set along with the industry trends in web technologies. My team relies on me to not only have strong front end development skills, but also to bring solutions and ideas to whatever project we're working on. You will find me to be passionate, trustworthy, and personable. The type of person whom you can rely on.",
     "location": {
       "address": "1230 Woodside LN",
       "postalCode": "WI 53122",
@@ -90,65 +90,43 @@
       "summary": "Interface design for web sites and interactive CD-ROMs, CD-ROM programming, front-end development, video production, 3D modeling, and animation. Did work with clients such as Caterpillar, Piper Aircraft, and The Packer Report."
     }
   ],
-  "volunteer": [{
-    "organization": "Organization",
-    "position": "Volunteer",
-    "website": "http://organization.com/",
-    "startDate": "2012-01-01",
-    "endDate": "2013-01-01",
-    "summary": "Description...",
-    "highlights": [
-      "Awarded 'Volunteer of the Month'"
-    ]
-  }],
   "education": [{
-    "institution": "University",
-    "area": "Software Development",
-    "studyType": "Bachelor",
-    "startDate": "2011-01-01",
-    "endDate": "2013-01-01",
-    "gpa": "4.0",
-    "courses": [
-      "DB1101 - Basic SQL"
-    ]
+    "institution": "Madison Area Technical College",
+    "area": "Visual Communications",
+    "studyType": "Associates Degree",
+    "startDate": "1993",
+    "endDate": "1996"
   }],
   "awards": [{
     "title": "Award",
-    "date": "2014-11-01",
-    "awarder": "Company",
-    "summary": "There is no spoon."
+    "date": "2010",
+    "awarder": "CSS_Tricks",
+    "summary": "1st Place CSS Tricks 2010 CSS-Off."
   }],
-  "publications": [{
-    "name": "Publication",
-    "publisher": "Company",
-    "releaseDate": "2014-10-01",
-    "website": "http://publication.com",
-    "summary": "Description..."
-  }],
-  "skills": [{
-    "name": "Web Development",
-    "level": "Master",
-    "keywords": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Angular",
-      "TypeScript"
-    ]
-  }],
+  "skills": [
+    "Experienced front-end development. Building websites in one form or another since 1996.",
+    "Front-end performance optimization.",
+    "Progressive enhancement, usability, and accessibility.",
+    "Able make appropriate judgement calls as to how to interpret a design into code.",
+    "Organic SEO using semantic HTML and Microformats.",
+    "Site planning and architecture.",
+    "Interaction design.",
+    "Technical writing experience.",
+    "Technical skills.",
+    "Expert knowledge in HTML/CSS",
+    "Working knowledge of Adobe Photoshop",
+    "Experienced in various JavaScript frameworks such as Angular/TypeScript",
+    "Experience working within Content Management Systems such as Drupal and Django.",
+    "Experience working within Git."
+  ],
   "languages": [{
     "name": "English",
     "level": "Native speaker"
   }],
   "interests": [{
-    "name": "Wildlife",
     "keywords": [
-      "Ferrets",
-      "Unicorns"
+      "Video Games",
+      "Board Games"
     ]
-  }],
-  "references": [{
-    "name": "Jane Doe",
-    "reference": "Reference..."
   }]
 }

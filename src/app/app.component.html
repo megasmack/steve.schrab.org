@@ -1,19 +1,27 @@
 <ss-drop-climber></ss-drop-climber>
 
-<header itemscope itemprop="Person" itemtype="http://schema.org/Person">
-  <h1 itemprop="name">Header</h1>
-  <img src="janedoe.jpg" itemprop="image" alt="Photo of Jane Joe"/>
-  <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-    <span itemprop="streetAddress">
-      1230 Woodside LN
-    </span>
-    <span itemprop="addressLocality">Elm Grove</span>,
-    <span itemprop="addressRegion">WI</span>
-    <span itemprop="postalCode">53122</span>
-  </div>
-  <span itemprop="telephone">(414) 688-5665</span>
-  <a href="mailto:steve@schrab.org" itemprop="email">steve@schrab.org</a>
-  <a href="https://steve.schrab.com" itemprop="url">steve.schrab.com</a>
-</header>
+<div class="container">
+  <aside itemscope itemprop="Person" itemtype="http://schema.org/Person">
+    <h1 itemprop="name">Header</h1>
+    <img src="janedoe.jpg" itemprop="image" alt="Photo of Jane Joe"/>
+    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <span itemprop="streetAddress">
+        1230 Woodside LN
+      </span>
+      <span itemprop="addressLocality">Elm Grove</span>,
+      <span itemprop="addressRegion">WI</span>
+      <span itemprop="postalCode">53122</span>
+    </div>
+    <span itemprop="telephone">(414) 688-5665</span>
+    <a href="mailto:steve@schrab.org" itemprop="email">steve@schrab.org</a>
+    <a href="https://steve.schrab.com" itemprop="url">steve.schrab.com</a>
+  </aside>
 
-<router-outlet></router-outlet>
+  <main>
+    <header>
+      <h1>Steve Schrab</h1>
+      <strong>Front-End Developer</strong>
+    </header>
+    <router-outlet></router-outlet>
+  </main>
+</div>

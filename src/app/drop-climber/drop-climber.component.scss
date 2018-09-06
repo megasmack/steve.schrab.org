@@ -21,6 +21,12 @@ $sprite-walk-left-alt:  sprite-position(-60px, -108px);
 $sprite-climb:          sprite-position(-330px, -108px);
 $sprite-flat:           sprite-position(-388px, -42px); // Subtract 8 so sprite is flush with bottom of screen
 
+:host {
+  @media print {
+    display: none;
+  }
+}
+
 .climber {
   @include sprite-dimensions;
   background-image: url('/assets/drop-climber/sprite.png');

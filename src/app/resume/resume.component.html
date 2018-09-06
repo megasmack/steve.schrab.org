@@ -12,5 +12,12 @@
       <p>{{ work.summary }}</p>
     </div>
   </section>
+</article>
 
+<article *ngIf="resumeSkills">
+  <h2>Professional capabilities</h2>
+
+  <ul class="skills">
+    <li *ngFor="let skill of resumeSkills">{{ skill }}</li>
+  </ul>
 </article>

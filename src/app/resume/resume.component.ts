@@ -11,17 +11,16 @@ import { ResumeService } from './resume.service';
 export class ResumeComponent implements OnInit {
   resumeData;
   resumeWork;
+  resumeSkills;
 
   constructor(public service: ResumeService) { }
 
   ngOnInit() {
-    // this.service.getJSON().subscribe(data => {
-    //     console.log(data);
-    // });
     this.getResume();
+
     setTimeout(() => {
       this.resumeWork = this.resumeData.work;
-      console.log(this.resumeWork);
+      this.resumeSkills = this.resumeData.skills;
     });
   }
 
