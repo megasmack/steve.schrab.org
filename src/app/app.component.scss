@@ -5,22 +5,97 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
+  @media screen and (min-width: $min-sm) {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 header {
-  > strong {
-    font-size: .9rem;
-    text-transform: capitalize;
+  text-align: center;
+
+  h1 {
+    position: relative;
+    margin: .5em;
+    border: 2px solid $border-color;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius:15px 255px;
+    padding: .3em .75em .35em .75em;
+    font-family: $display-font-family;
+    font-size: 30px;
+    font-weight: 400;
+    font-display: optional;
+    line-height: 1;
+    text-transform: uppercase;
+
+    @media screen and (min-width: $min-sm) {
+      display: inline-block;
+      font-size: calc(30px + 50 * ((100vw - 576px) / 624));
+    }
+    @media screen and (min-width: $min-xl) {
+      font-size: 80px;
+    }
+
+    .title {
+      position: absolute;
+      left: 50%;
+      bottom: -.45em;
+      transform: translateX(-50%);
+      padding: 0 .25em;
+      background: $color5;
+      font-family: $base-font-family;
+      font-size: .35em;
+      font-weight: normal;
+      white-space: nowrap;
+    }
   }
 }
 
 aside {
-  background: $color-primary-0;
-  color: $color-primary-2;
+  width: 12rem;
+  padding: $base-padding;
+  background: $color1;
+  font-size: .9rem;
+  color: $color3;
+
+  @supports (background-blend-mode: multiply) {
+    background-image: url('/assets/app/texture.jpg');
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+  }
+
+  [itemprop=name] {
+    display: none;
+  }
 }
 
 main {
   flex: 1;
+}
+
+.head-shot {
+  position: relative;
+  border-radius: 100%;
+  height: 6rem;
+  overflow: hidden;
+  width: 6rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    border: 4px solid $color3;
+    border-radius: 100%;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, .2);
+  }
+
+  > img {
+    max-width: 100%;
+  }
 }

@@ -1,19 +1,44 @@
 @import 'vars';
 
+@font-face {
+  font-family: 'Fredericka the Great';
+  src: url('/assets/fonts/FrederickatheGreat-Regular.ttf')  format('truetype');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  background: $color-primary-1;
-  color: $color-primary-3;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  font-family: $base-font-family;
   font-size: 20px;
-  line-height: 1.5em;
+  line-height: 1.15;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 body {
+  background: $color5;
   margin: 0;
 }
 
 .drop-climber-dragging {
   cursor: grabbing;
+}
+
+a {
+  color: $color2;
+}
+
+hr {
+  height: 4px;
+  border: 0;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius:15px 255px;
+  background: $border-color;
 }
