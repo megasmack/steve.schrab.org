@@ -17,16 +17,13 @@ export class ResumeComponent implements OnInit {
 
   ngOnInit() {
     this.getResume();
-
-    setTimeout(() => {
-      this.resumeWork = this.resumeData.work;
-      this.resumeSkills = this.resumeData.skills;
-    });
   }
 
   getResume() {
     this.service.getJSON().subscribe(data => {
       this.resumeData = data;
+      this.resumeWork = this.resumeData.work;
+      this.resumeSkills = this.resumeData.skills;
     },
     err => {
       console.log('error: ', err);
