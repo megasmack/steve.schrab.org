@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DropClimberComponent } from './drop-climber/drop-climber.component';
 import { ResumeComponent } from './resume/resume.component';
+import { SkillCircleComponent } from './skill-circle/skill-circle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DropClimberComponent,
-    ResumeComponent
+    ResumeComponent,
+    SkillCircleComponent
   ],
   imports: [
     HttpClientModule,
