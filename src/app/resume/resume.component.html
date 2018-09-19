@@ -1,24 +1,29 @@
-<article *ngIf="resumeWork">
-  <hr/>
-  <h2>Work</h2>
+<article>
+  <section id="about" *ngIf="resumeSummary">
+    <h2>About Steve</h2>
+    <p class="summary">{{ resumeSummary }}</p>
+  </section>
 
-  <section class="position" *ngFor="let work of resumeWork">
-    <h4 class="company">{{ work.company }}</h4>
-    <h5 class="title">{{ work.position }}</h5>
-    <div class="position-details">
-      <span class="duration">{{ work.startDate }} – {{ work.endDate}}</span><br>
-      <span class="location">Brookfield, WI</span>
-    </div>
-    <div class="description">
-      <p>{{ work.summary }}</p>
+  <section id="work" *ngIf="resumeWork">
+    <h2>Work</h2>
+    <div class="position" *ngFor="let work of resumeWork">
+      <h4 class="company">{{ work.company }}</h4>
+      <h5 class="title">{{ work.position }}</h5>
+      <div class="position-details">
+        <span class="duration">{{ work.startDate }} – {{ work.endDate}}</span><br>
+        <span class="location">Brookfield, WI</span>
+      </div>
+      <div class="description">
+        <p>{{ work.summary }}</p>
+      </div>
     </div>
   </section>
-</article>
 
-<article *ngIf="resumeSkills">
-  <h2>Professional capabilities</h2>
+  <section id="capabilities" *ngIf="resumeSkills">
+    <h2>Professional capabilities</h2>
 
-  <ul class="skills">
-    <li *ngFor="let skill of resumeSkills">{{ skill }}</li>
-  </ul>
+    <ul class="skills">
+      <li *ngFor="let skill of resumeSkills">{{ skill }}</li>
+    </ul>
+  </section>
 </article>
