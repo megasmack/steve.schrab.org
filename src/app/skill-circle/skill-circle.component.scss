@@ -24,11 +24,21 @@
   stroke: $color3;
   stroke-linecap: round;
   stroke-width: 12px;
-  transition: stroke-dashoffset .5s ease;
+  transition:
+    stroke-dashoffset .5s ease,
+    opacity .5s linear;
 }
 
 .skill-circle--name {
   font-size: .75rem;
   font-weight: bold;
   text-align: center;
+}
+
+.low {
+  stroke: $danger;
+}
+
+.medium {
+  stroke: $warning;
 }

@@ -12,7 +12,7 @@
 }
 
 header {
-  @include texturebackground;
+  // @include texturebackground;
   padding: .75rem 1rem .75rem 3rem;
   text-align: center;
   background: $color1;
@@ -35,18 +35,23 @@ header {
     -moz-osx-font-smoothing: grayscale;
 
     .title {
-      @include texturebackground;
+      // @include texturebackground;
       position: absolute;
       left: 50%;
       bottom: 0;
       transform: translate(-50%, 50%);
-      border-left: 2px solid $color5;
-      border-right: 2px solid $color5;
-      padding: 0 .5em;
+      border-width: 2px;
+      border-style: solid;
+      border-top-color: $color1;
+      border-bottom-color: $color1;
+      border-left-color: $color5;
+      border-right-color: $color5;
+      padding: 0 .5em .1em;
       background: $color1;
       font-family: $base-font-family;
-      font-size: .35em;
+      font-size: .3em;
       font-weight: normal;
+      line-height: 1;
       white-space: nowrap;
     }
   }
