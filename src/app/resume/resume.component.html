@@ -7,13 +7,13 @@
   <section id="work" *ngIf="resumeWork">
     <h2>Work</h2>
     <div class="position" *ngFor="let work of resumeWork">
-      <h4 class="company">{{ work.company }}</h4>
-      <h5 class="title">{{ work.position }}</h5>
-      <div class="position-details">
-        <span class="duration">{{ work.startDate }} – {{ work.endDate}}</span><br>
-        <span class="location">Brookfield, WI</span>
+      <h4 class="position--company">{{ work.company }}</h4>
+      <h5 class="position--title">{{ work.position }}</h5>
+      <div class="position--details">
+        <span class="position--duration">{{ work.startDate }} – {{ work.endDate}}</span><br>
+        <span class="position--location">Brookfield, WI</span>
       </div>
-      <div class="description">
+      <div class="position--description">
         <p>{{ work.summary }}</p>
       </div>
     </div>

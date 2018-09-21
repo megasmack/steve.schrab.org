@@ -1,23 +1,36 @@
 @import 'vars';
 
 :host {
-  display: block;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 50%;
+  display: none;
+
+  @media screen and (min-width: $min-sm) {
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+  }
+
+  @media screen and (min-width: $min-xl) {
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 33%;
+  }
 }
 
 .skill-circle--graph {
   display: block;
   margin: 0 auto;
-  max-width: 100px;
+  max-width: 80%;
   fill: none;
   transform: rotate(-90deg);
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, .4));
 }
 
 .skill-circle--base {
-  stroke: $dark;
-  stroke-width: 14px;
+  stroke: lighten($dark, 10%);
+  stroke-width: 2.4rem;
 }
 
 .skill-circle--amount {
@@ -30,15 +43,16 @@
 }
 
 .skill-circle--name {
-  font-size: .75rem;
+  margin: .2em 0 2em;
+  font-size: 1.6rem;
   font-weight: bold;
   text-align: center;
 }
 
-.low {
+.skill-circle--low {
   stroke: $danger;
 }
 
-.medium {
+.skill-circle--medium {
   stroke: $warning;
 }

@@ -20,13 +20,13 @@ export class SkillCircleComponent implements OnInit {
 
   ngOnInit() {
     const circle: NodeListOf<SVGElement> = this.el.nativeElement.querySelectorAll('.skill-circle--amount');
-    const circleLow: SVGElement = this.el.nativeElement.querySelector('.skill-circle--amount.low');
-    const circleMedium: SVGElement = this.el.nativeElement.querySelector('.skill-circle--amount.medium');
-    const circleHigh: SVGElement = this.el.nativeElement.querySelector('.skill-circle--amount.high');
-    const radius: number = parseFloat(this.el.nativeElement.querySelector('.skill-circle--amount').getAttribute('r'));
+    const circleLow: SVGElement = this.el.nativeElement.querySelector('.skill-circle--low');
+    const circleMedium: SVGElement = this.el.nativeElement.querySelector('.skill-circle--medium');
+    const circleHigh: SVGElement = this.el.nativeElement.querySelector('.skill-circle--high');
+    const radius: number = parseFloat(circleHigh.getAttribute('r'));
     const circumference: number = 2 * Math.PI * radius;
 
-    const timer = offSetTime * 1000;
+    const timer = offSetTime * 500;
     const circleLength = circle.length;
 
     for (let x = 0; x < circleLength; x++) {
