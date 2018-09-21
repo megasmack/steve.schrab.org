@@ -1,0 +1,39 @@
+@import 'vars';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color: $dark;
+  font-family: $base-font-family;
+  font-size: 10px;
+  line-height: 1.15;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  background: $color5;
+  margin: 0;
+}
+
+.drop-climber-dragging {
+  cursor: grabbing;
+}
+
+a {
+  color: $color2;
+}
+
+hr {
+  height: 2px;
+  border: 0;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius:15px 255px;
+  background: $dark;
+}

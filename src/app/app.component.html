@@ -1,20 +1,46 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <ss-drop-climber></ss-drop-climber> -->
+<header>
   <h1>
-    Welcome to {{ title }}!
+    Steve Schrab
+    <span class="title">Senior Front-End Engineer</span>
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+</header>
 
+<div class="container">
+  <aside itemscope itemprop="Person" itemtype="http://schema.org/Person">
+    <div itemprop="name">Steve Schrab</div>
+    <div class="head-shot">
+      <img src="assets/app/profile-2.jpg" itemprop="image" alt="Photo of Steve Schrab"/>
+    </div>
+    <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <span itemprop="streetAddress">
+        1230 Woodside LN
+      </span>
+      <span itemprop="addressLocality">Elm Grove</span>,
+      <span itemprop="addressRegion">WI</span>
+      <span itemprop="postalCode">53122</span>
+    </div>
+    <p>
+      <span itemprop="telephone">(414) 688-5665</span><br>
+      <a href="mailto:steve@schrab.org" itemprop="email">steve@schrab.org</a>
+    </p>
+
+    <div class="skills">
+      <ss-skill-circle skill="HTML" [percentage]="100"></ss-skill-circle>
+      <ss-skill-circle skill="CSS" [percentage]="100"></ss-skill-circle>
+      <ss-skill-circle skill="JavaScript" [percentage]="60"></ss-skill-circle>
+      <ss-skill-circle skill="SCSS/LESS" [percentage]="90"></ss-skill-circle>
+      <ss-skill-circle skill="Git" [percentage]="80"></ss-skill-circle>
+      <ss-skill-circle skill="Angular" [percentage]="60"></ss-skill-circle>
+      <ss-skill-circle skill="TypeScript" [percentage]="75"></ss-skill-circle>
+      <ss-skill-circle skill="React" [percentage]="20"></ss-skill-circle>
+      <ss-skill-circle skill="Drupal" [percentage]="50"></ss-skill-circle>
+      <ss-skill-circle skill="PhotoShop" [percentage]="60"></ss-skill-circle>
+      <ss-skill-circle skill="Actual Cannibal" [percentage]="1"></ss-skill-circle>
+    </div>
+  </aside>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

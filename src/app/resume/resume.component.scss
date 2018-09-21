@@ -1,0 +1,50 @@
+@import 'vars';
+
+:host {
+  display: block;
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 6rem;
+  font-size: 1.8rem;
+  line-height: 1.2em;
+}
+
+h2 {
+  border-bottom: 2px double $border-color;
+  padding-bottom: .2em;
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.summary {
+  font-size: 1.8rem;
+  line-height: 1.5em;
+}
+
+.position {
+  margin: 2rem 0;
+}
+
+.position--details {
+  font-size: 1.4rem;
+  line-height: 1.5em;
+  margin: .5em 0;
+}
+
+.position--company,
+.position--title {
+  margin: 0;
+}
+
+.position--description {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+
+  p {
+    margin: 0 0 1em;
+  }
+}
+
+.skills {
+  font-size: .8em;
+}
