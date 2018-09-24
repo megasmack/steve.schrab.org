@@ -68,12 +68,13 @@ header {
   }
 
   @media print {
-    padding: 2rem 4rem;
+    padding: 1.5rem 4rem;
     background: transparent;
     color: $dark;
     box-shadow: none;
 
     h1 {
+      padding: .9rem 2.25rem 1.05rem;
       border: 1px solid $dark;
       font-size: 5rem !important;
       text-shadow: none;
