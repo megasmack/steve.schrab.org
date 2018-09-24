@@ -12,7 +12,7 @@
 }
 
 header {
-  padding: 1.5rem 2rem 1.5rem 6rem;
+  padding: 2rem 2rem 2rem 6rem;
   text-align: center;
   background: $color1;
   color: $color5;
@@ -22,11 +22,12 @@ header {
     position: relative;
     margin: 0;
     border: 2px solid $color5;
-    padding: .9rem 2.25rem 1.05rem;
-    font-family: $display-font-family;
+    padding: 1rem 2.5rem 1.1rem;
+    // font-family: $display-font-family;
     font-size: 3rem;
     font-weight: 600;
     font-display: optional;
+    letter-spacing: .05em;
     line-height: 1;
     text-transform: uppercase;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
@@ -53,17 +54,17 @@ header {
   }
 
   @media screen and (min-width: $min-sm) {
-    padding: 1.5rem 2rem 2.5rem;
+    padding: 2rem 2rem 2.5rem;
 
     h1 {
       display: inline-block;
-      font-size: calc(30px + 50 * ((100vw - 576px) / 624));
+      font-size: calc(3rem + 3rem * ((100vw - 576px) / 624));
     }
   }
 
   @media screen and (min-width: $min-xl) {
     h1 {
-      font-size: 8rem;
+      font-size: 6rem;
     }
   }
 
