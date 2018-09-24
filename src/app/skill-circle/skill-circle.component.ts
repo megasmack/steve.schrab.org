@@ -38,7 +38,6 @@ export class SkillCircleComponent implements OnInit {
         // Set strokeDashoffset to a percentage of the circumference
         circle[x].style.strokeDashoffset = `${circumference * (1 - (this.percentage * .01))}`;
 
-        console.log((((this.percentage * 50) / 100) - 100));
         if (this.percentage >= 50) {
           circleLow.style.opacity = `${0}`;
           circleMedium.style.opacity = `${(100 - this.percentage) * .02}`;

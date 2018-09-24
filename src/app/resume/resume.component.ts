@@ -9,10 +9,11 @@ import { ResumeService } from './resume.service';
   providers: [ResumeService]
 })
 export class ResumeComponent implements OnInit {
-  resumeData;
-  resumeSummary;
+  resumeBasics;
   resumeWork;
   resumeSkills;
+  resumeEdu;
+  resumeAwards;
 
   constructor(public service: ResumeService) { }
 
@@ -22,9 +23,11 @@ export class ResumeComponent implements OnInit {
 
   getResume() {
     this.service.getJSON().subscribe(data => {
-      this.resumeSummary = data.basics.summary;
+      this.resumeBasics = data.basics;
       this.resumeWork = data.work;
       this.resumeSkills = data.skills;
+      this.resumeEdu = data.education;
+      this.resumeAwards = data.awards;
     },
     err => {
       console.log('error: ', err);

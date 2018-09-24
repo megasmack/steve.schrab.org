@@ -7,13 +7,62 @@
   padding: 6rem;
   font-size: 1.8rem;
   line-height: 1.2em;
+
+  @media print {
+    max-width: 100%;
+    padding: 0 4rem 2rem;
+  }
+}
+
+#profiles,
+#capabilities,
+#awards,
+#education,
+.position {
+  @media print {
+    break-inside: avoid;
+  }
 }
 
 h2 {
-  border-bottom: 2px double $border-color;
-  padding-bottom: .2em;
+  margin-top: 2em;
+  border-bottom: 2px solid $border-color;
+  padding-bottom: .25em;
   font-size: 2.4rem;
   font-weight: 600;
+
+  @media print {
+    margin-top: 1em;
+    border-bottom-width: 1px;
+  }
+}
+
+#profiles {
+  display: none;
+
+  @media print {
+    display: block;
+  }
+}
+
+.contact {
+  display: none;
+
+  @media print {
+    display: block;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+}
+
+.contact--info {
+  margin-bottom: .1em;
+
+  span {
+    &:not(:last-child)::after {
+      content: ' | ';
+    }
+  }
 }
 
 .summary {
@@ -28,7 +77,7 @@ h2 {
 .position--details {
   font-size: 1.4rem;
   line-height: 1.5em;
-  margin: .5em 0;
+  margin: .25em 0 .5em;
 }
 
 .position--company,
@@ -46,5 +95,9 @@ h2 {
 }
 
 .skills {
-  font-size: .8em;
+  font-size: 1.6rem;
+}
+
+.url {
+  text-decoration: underline;
 }

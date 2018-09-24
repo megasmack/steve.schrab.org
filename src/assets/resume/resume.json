@@ -3,13 +3,13 @@
     "name": "Steve Schrab",
     "label": "Senior Front-End Engineer",
     "picture": "",
-    "email": "steve.schrab",
+    "email": "steve@schrab.org",
     "phone": "(414) 688-5665",
-    "website": "http://steve.schrab.org",
+    "website": "steve.schrab.org",
     "summary": "For 20+ years I have been professionally building websites and webapps. Evolving my skill set along with the industry trends in web technologies. My team relies on me to not only have strong front end development skills, but also to bring solutions and ideas to whatever project we're working on. You will find me to be passionate, trustworthy, and personable. The type of person whom you can rely on.",
     "location": {
       "address": "1230 Woodside LN",
-      "postalCode": "WI 53122",
+      "postalCode": "53122",
       "city": "Elm Grove",
       "countryCode": "US",
       "region": "Wisconsin"
@@ -39,7 +39,7 @@
       "startDate": "May 2016",
       "endDate": "present",
       "location": "Brookfield, WI",
-      "summary": "Part of a team that built and maintained a User Interface component library for new web applications in use by Thomson Reuters North American Wealth Management branch. Components and Applications were built on Angular 6/TypeScript stack."
+      "summary": "Built and maintained a User Interface component library for new web applications in use by Thomson Reuters North American Wealth Management branch. Components and Applications were built on Angular 6/TypeScript stack."
     },
     {
       "company": "SafeNet Consulting",
@@ -47,7 +47,7 @@
       "startDate": "Jan 2016",
       "endDate": "May 2016",
       "location": "Milwaukee, WI",
-      "summary": "Worked as a Front-End Developer consultant at Johnson Controls building web apps using HTML, CSS, Angular/TypeScript."
+      "summary": "Worked as a Front-End Developer consultant at Johnson Controls building the UI for their next generation water plant optimization tools using HTML, CSS, Angular 2/TypeScript."
     },
     {
       "company": "GS Design",
@@ -101,7 +101,8 @@
     "title": "Award",
     "date": "2010",
     "awarder": "CSS_Tricks",
-    "summary": "1st Place CSS Tricks 2010 CSS-Off."
+    "summary": "1st Place CSS Tricks 2010 CSS-Off",
+    "url": "https://css-tricks.com/css-off-results/"
   }],
   "skills": [
     "Experienced front-end development. Building websites in one form or another since 1996.",
@@ -115,7 +116,7 @@
     "Technical skills.",
     "Expert knowledge in HTML/CSS",
     "Working knowledge of Adobe Photoshop",
-    "Experienced in various JavaScript frameworks such as Angular/TypeScript",
+    "Proficient in various JavaScript frameworks such as Angular/TypeScript",
     "Experience working within Content Management Systems such as Drupal and Django.",
     "Experience working within Git."
   ],
@@ -126,7 +127,8 @@
   "interests": [{
     "keywords": [
       "Video Games",
-      "Board Games"
+      "Board Games",
+      "Dogs"
     ]
   }]
 }

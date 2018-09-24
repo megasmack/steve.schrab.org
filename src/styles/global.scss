@@ -13,6 +13,10 @@ html {
   line-height: 1.15;
   min-height: 100vh;
   overflow-x: hidden;
+
+  @media print {
+    font-size: 8px;
+  }
 }
 
 body {

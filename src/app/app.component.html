@@ -7,23 +7,27 @@
 </header>
 
 <div class="container">
-  <aside itemscope itemprop="Person" itemtype="http://schema.org/Person">
-    <div itemprop="name">Steve Schrab</div>
+  <aside *ngIf="resumeBasics" itemscope itemprop="Person" itemtype="http://schema.org/Person">
+    <div itemprop="name">{{ resumeBasics.name }}</div>
     <div class="head-shot">
       <img src="assets/app/profile-2.jpg" itemprop="image" alt="Photo of Steve Schrab"/>
     </div>
     <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-      <span itemprop="streetAddress">
-        1230 Woodside LN
-      </span>
-      <span itemprop="addressLocality">Elm Grove</span>,
-      <span itemprop="addressRegion">WI</span>
-      <span itemprop="postalCode">53122</span>
+      <span itemprop="streetAddress">{{ resumeBasics.location.address }}</span>
+      <span itemprop="addressLocality">{{ resumeBasics.location.city }}</span>,&nbsp;
+      <span itemprop="addressRegion">{{ resumeBasics.location.region }}</span>&nbsp;
+      <span itemprop="postalCode">{{ resumeBasics.location.postalCode }}</span>
     </div>
     <p>
-      <span itemprop="telephone">(414) 688-5665</span><br>
-      <a href="mailto:steve@schrab.org" itemprop="email">steve@schrab.org</a>
+      <span itemprop="telephone">{{ resumeBasics.phone }}</span><br>
+      <a href="mailto:{{ resumeBasics.email }}" itemprop="email">{{ resumeBasics.email }}</a>
     </p>
+
+    <div class="profiles">
+      <div *ngFor="let profile of resumeBasics.profiles">
+        - <a href="{{ profile.url }}" target="_block">{{ profile.network }}</a>
+      </div>
+    </div>
 
     <div class="skills">
       <ss-skill-circle skill="HTML" [percentage]="100"></ss-skill-circle>
@@ -33,10 +37,10 @@
       <ss-skill-circle skill="Git" [percentage]="80"></ss-skill-circle>
       <ss-skill-circle skill="Angular" [percentage]="60"></ss-skill-circle>
       <ss-skill-circle skill="TypeScript" [percentage]="75"></ss-skill-circle>
-      <ss-skill-circle skill="React" [percentage]="20"></ss-skill-circle>
+      <ss-skill-circle skill="React" [percentage]="15"></ss-skill-circle>
       <ss-skill-circle skill="Drupal" [percentage]="50"></ss-skill-circle>
       <ss-skill-circle skill="PhotoShop" [percentage]="60"></ss-skill-circle>
-      <ss-skill-circle skill="Actual Cannibal" [percentage]="1"></ss-skill-circle>
+      <ss-skill-circle skill="Actual Ninja" [percentage]="5"></ss-skill-circle>
     </div>
   </aside>
 

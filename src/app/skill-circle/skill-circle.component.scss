@@ -2,19 +2,13 @@
 
 :host {
   display: none;
+  max-width: 120px;
 
   @media screen and (min-width: $min-sm) {
     display: block;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 50%;
-  }
-
-  @media screen and (min-width: $min-xl) {
-    display: block;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 33%;
   }
 }
 

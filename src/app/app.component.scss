@@ -25,13 +25,11 @@ header {
     padding: .9rem 2.25rem 1.05rem;
     font-family: $display-font-family;
     font-size: 3rem;
-    font-weight: 400;
+    font-weight: 600;
     font-display: optional;
     line-height: 1;
     text-transform: uppercase;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 
     .title {
       position: absolute;
@@ -65,7 +63,30 @@ header {
 
   @media screen and (min-width: $min-xl) {
     h1 {
-      font-size: 80px;
+      font-size: 8rem;
+    }
+  }
+
+  @media print {
+    padding: 2rem 4rem;
+    background: transparent;
+    color: $dark;
+    box-shadow: none;
+
+    h1 {
+      border: 1px solid $dark;
+      font-size: 5rem !important;
+      text-shadow: none;
+
+      .title {
+        border-width: 1px;
+        border-style: solid;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: $dark;
+        border-right-color: $dark;
+        background: #fff;
+      }
     }
   }
 }
@@ -74,7 +95,7 @@ aside {
   box-shadow: inset 0 3px 10px rgba(0, 0, 0, .5);
   padding: 1rem 3rem;
   background: darken($color1, 10%);
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: 1.5em;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
@@ -86,6 +107,11 @@ aside {
 
   @media screen and (min-width: $min-sm) {
     width: 30%;
+    max-width: 320px;
+  }
+
+  @media print {
+    display: none;
   }
 }
 
@@ -110,7 +136,7 @@ main {
     bottom: 0;
     left: 0;
     z-index: 1;
-    border: 4px solid $color2;
+    border: 4px solid $success;
     border-radius: 100%;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, .2);
   }
@@ -134,7 +160,7 @@ main {
     width: 80%;
 
     &::after {
-      border-width: 6px;
+      border-width: 1rem;
     }
   }
 }
@@ -145,6 +171,10 @@ main {
   [itemprop=streetAddress] {
     display: block;
   }
+}
+
+.profiles {
+  margin-bottom: 2rem;
 }
 
 .skills {
