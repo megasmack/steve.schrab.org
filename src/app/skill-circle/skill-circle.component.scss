@@ -4,6 +4,30 @@
   display: none;
   max-width: 120px;
 
+  &.skill-circle--maxed {
+    animation-delay: .5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-name: pulse;
+
+    @at-root {
+      @keyframes pulse {
+        0% {
+          filter: drop-shadow(0 0 0 rgba($success, .4));
+        }
+
+        33% {
+          filter: drop-shadow(0 0 14px rgba($success, .4));
+        }
+
+        100% {
+          filter: drop-shadow(0 0 6px rgba(0, 0, 0, .4));
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: $min-sm) {
     display: block;
     flex-grow: 1;
@@ -23,12 +47,12 @@
 }
 
 .skill-circle--base {
-  stroke: lighten($dark, 10%);
+  stroke: $light;
   stroke-width: 2.4rem;
 }
 
 .skill-circle--amount {
-  stroke: $color3;
+  stroke: $warning;
   stroke-linecap: round;
   stroke-width: 12px;
   transition:
@@ -48,5 +72,5 @@
 }
 
 .skill-circle--medium {
-  stroke: $warning;
+  stroke: $color2;
 }

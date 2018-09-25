@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostBinding } from '@angular/core';
 
 let offSetTime = 1;
 
@@ -8,13 +8,13 @@ let offSetTime = 1;
   styleUrls: ['./skill-circle.component.scss']
 })
 export class SkillCircleComponent implements OnInit {
+  @HostBinding('class.skill-circle')
+    hostClass = true;
+  @HostBinding('class.skill-circle--maxed')
+    maxed = false;
 
   @Input() skill: string;
   @Input() percentage: number;
-
-  private circle: NodeListOf<SVGElement>;
-  private radius: number;
-  private circumference: number;
 
   constructor(public el: ElementRef) { }
 
@@ -45,6 +45,24 @@ export class SkillCircleComponent implements OnInit {
           circleHigh.style.opacity = `${0}`;
           circleLow.style.opacity = `${(100 - ((this.percentage * 50) / 100)) * .01}`;
         }
+
+        if (this.percentage === 100) {
+          this.maxed = true;
+        }
+
+        // if (this.percentage >= 66) {
+        //   circleHigh.style.opacity = `${1}`;
+        //   circleMedium.style.opacity = `${1}`;
+        //   circleLow.style.opacity = `${1}`;
+        // } else if  (this.percentage >= 33 && this.percentage < 66) {
+        //   circleHigh.style.opacity = `${0}`;
+        //   circleMedium.style.opacity = `${1}`;
+        //   circleLow.style.opacity = `${1}`;
+        // } else {
+        //   circleHigh.style.opacity = `${0}`;
+        //   circleMedium.style.opacity = `${0}`;
+        //   circleLow.style.opacity = `${1}`;
+        // }
       }, timer);
     }
 
