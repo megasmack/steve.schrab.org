@@ -57,7 +57,7 @@ header {
 
     h1 {
       display: inline-block;
-      font-size: calc(3rem + 3rem * ((100vw - 576px) / 624));
+      font-size: calc(3rem + 30 * ((100vw - 576px) / 624));
     }
   }
 
