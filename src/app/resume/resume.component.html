@@ -15,6 +15,14 @@
     <p class="summary">{{ resumeBasics.summary }}</p>
   </section>
 
+  <section id="capabilities" *ngIf="resumeSkills">
+    <h2>Professional capabilities</h2>
+
+    <ul class="skills">
+      <li *ngFor="let skill of resumeSkills">{{ skill }}</li>
+    </ul>
+  </section>
+
   <section id="work" *ngIf="resumeWork">
     <h2>Work</h2>
     <div class="position" *ngFor="let work of resumeWork">
@@ -28,14 +36,6 @@
         <p>{{ work.summary }}</p>
       </div>
     </div>
-  </section>
-
-  <section id="capabilities" *ngIf="resumeSkills">
-    <h2>Professional capabilities</h2>
-
-    <ul class="skills">
-      <li *ngFor="let skill of resumeSkills">{{ skill }}</li>
-    </ul>
   </section>
 
   <section id="education" *ngIf="resumeEdu">
