@@ -1,5 +1,7 @@
 # Steve.Schrab.org
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e14aeb57-8b19-4d39-8482-44c165dcf74a/deploy-status)](https://app.netlify.com/sites/steve-schrab/deploys)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
 
 ## Install Dependencies

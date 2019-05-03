@@ -57,6 +57,9 @@ header {
 
     h1 {
       display: inline-block;
+      // Fluid Typography
+      // https://css-tricks.com/snippets/css/fluid-typography/
+      // calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
       font-size: calc(3rem + 30 * ((100vw - 576px) / 624));
     }
   }
