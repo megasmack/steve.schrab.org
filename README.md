@@ -2,24 +2,74 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e14aeb57-8b19-4d39-8482-44c165dcf74a/deploy-status)](https://app.netlify.com/sites/steve-schrab/deploys)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
+# eleventy-base-blog
 
-## Install Dependencies
+A starter repository showing how to build a blog with the [Eleventy](https://github.com/11ty/eleventy) static site generator.
 
-This project uses [Yarn](https://yarnpkg.com/en/) as a package manager. Run `yarn` or `yarn install` from the project's root directory to install all dependencies.
+[![Build Status](https://travis-ci.org/11ty/eleventy-base-blog.svg?branch=master)](https://travis-ci.org/11ty/eleventy-base-blog)
 
-## Development server
+## Demos
 
-Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [Netlify](https://eleventy-base-blog.netlify.com/)
+* [Get your own Eleventy web site on Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/11ty/eleventy-base-blog)—seriously, just click OK a few times and it’s live—Netlify is amazing.
+* [GitHub Pages](https://11ty.github.io/eleventy-base-blog/)
 
-## Build
+## Getting Started
 
-Run `yarn build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### 1. Clone this repository:
 
-## Running end-to-end tests
+```
+git clone https://github.com/11ty/eleventy-base-blog.git my-blog-name
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+### 2. Navigate to the directory
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+cd my-blog-name
+```
+
+Specifically have a look at `.eleventy.js` to see if you want to configure any Eleventy options differently.
+
+### 3. Install dependencies
+
+```
+npm install
+```
+
+### 4. Edit _data/metadata.json
+
+### 5. Run Eleventy
+
+```
+npx eleventy
+```
+
+Or build and host locally for local development
+```
+npx eleventy --serve
+```
+
+Or build automatically when a template changes:
+```
+npx eleventy --watch
+```
+
+Or in debug mode:
+```
+DEBUG=* npx eleventy
+```
+
+### Implementation Notes
+
+* `about/index.md` shows how to add a content page.
+* `posts/` has the blog posts but really they can live in any directory. They need only the `post` tag to be added to this collection.
+* Add the `nav` tag to add a template to the top level site navigation. For example, this is in use on `index.njk` and `about/index.md`.
+* Content can be any template format (blog posts needn’t be markdown, for example). Configure your supported templates in `.eleventy.js` -> `templateFormats`.
+	* Because `css` and `png` are listed in `templateFormats` but are not supported template types, any files with these extensions will be copied without modification to the output (while keeping the same directory structure).
+* The blog post feed template is in `feed/feed.njk`. This is also a good example of using a global data files in that it uses `_data/metadata.json`.
+* This example uses three layouts:
+  * `_includes/layouts/base.njk`: the top level HTML structure
+  * `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
+  * `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
+* `_includes/postlist.njk` is a Nunjucks include and is a reusable component used to display a list of all the posts. `index.njk` has an example of how to use it.

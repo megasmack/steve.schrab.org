@@ -1,0 +1,16 @@
+{
+  "title": "Steve Schrab",
+  "url": "https://steve.schrab.org/",
+  "description": "Steve Schrab’s website of writings, experiments, and personal job hunting.",
+  "feed": {
+    "subtitle": "Steve Schrab’s website of writings, experiments, and personal job hunting.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "url": "https://steve.schrab.org/feed/feed.xml",
+    "id": "https://steve.schrab.org/"
+  },
+  "author": {
+    "name": "Steve Schrab",
+    "email": "youremailaddress@example.com"
+  }
+}

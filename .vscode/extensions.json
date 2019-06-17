@@ -3,7 +3,6 @@
   // Feel free to add more extensions from the vsCode Marketplace.
   "recommendations": [
     "EditorConfig.EditorConfig",
-    "eg2.tslint",
     "glen-84.sass-lint"
   ]
 }
